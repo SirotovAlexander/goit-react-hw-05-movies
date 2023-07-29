@@ -1,7 +1,7 @@
 import Header from 'components/Header/Header';
 import { Outlet } from 'react-router-dom';
 
-const Layout = () => {
+const SharedLayout = () => {
   return (
     <div>
       <Header />
@@ -10,4 +10,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default SharedLayout;
