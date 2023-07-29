@@ -7,5 +7,5 @@ const API_KEY = 'api_key=6dc3c680a14b9efb7e9b9a5d6fd3dce3';
 
 export const getTrending = async () => {
   const response = await axios.get(`${BASE_LINK}${END_POINT}${API_KEY}`);
-  console.log(response);
+  return response.data;
 };

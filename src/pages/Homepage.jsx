@@ -1,7 +1,9 @@
+import Trends from 'components/Trends/Trends';
+
 const HomePage = () => {
   return (
     <div>
-      <p>SOME TEXT ON HOMEPAGE</p>
+      <Trends />
     </div>
   );
 };
