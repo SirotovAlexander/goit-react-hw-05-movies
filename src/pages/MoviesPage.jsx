@@ -1,7 +1,10 @@
 const MoviesPage = () => {
   return (
     <div>
-      <p>SOME TEXT ON MOVIES</p>
+      <form>
+        <input type="text" autoComplete="off" />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 };
