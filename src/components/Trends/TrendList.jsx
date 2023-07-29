@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const TrendList = ({ trends }) => {
   //   console.log(trends);
@@ -6,13 +7,15 @@ const TrendList = ({ trends }) => {
     <ul>
       {trends.map(trend => {
         return (
-          <li key={trend.id}>
-            {/* <img
+          <Link to={`/MoviesPage/${trend.id}`} key={trend.id}>
+            <li>
+              {/* <img
               src={'https://image.tmdb.org/t/p/w300' + trend.poster_path}
               alt="poster"
             /> */}
-            <p>{trend.title}</p>
-          </li>
+              <p>{trend.title}</p>
+            </li>
+          </Link>
         );
       })}
     </ul>
