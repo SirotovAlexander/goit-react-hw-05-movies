@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { getTrending } from '../api/getDataAPI';
 
 export const App = () => {
-  getTrending();
+  // getTrending();
   return (
     <div
       style={{
