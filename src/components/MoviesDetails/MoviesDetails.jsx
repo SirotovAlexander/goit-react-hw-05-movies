@@ -4,6 +4,8 @@ import { getMovieDetails } from '../../api/getDataAPI';
 
 const MoviesDetails = () => {
   const [info, setInfo] = useState({});
+  const [genres, setGenres] = useState([]);
+
   const { MovieID } = useParams();
 
   useEffect(() => {
@@ -11,16 +13,29 @@ const MoviesDetails = () => {
       try {
         const data = await getMovieDetails(MovieID);
         setInfo(data);
-        // console.log(data);
+        setGenres(data.genres);
       } catch (error) {
         console.log(error);
       }
     }
     getDetails();
   }, [MovieID]);
-  console.log(info);
 
-  return <div>...</div>;
+  return (
+    <div>
+      <img src={'https://image.tmdb.org/t/p/w300' + info.poster_path} alt="" />
+      <h2>
+        {info.original_title} ({info.release_date})
+      </h2>
+      <p>User score: {info.vote_average}</p>
+      <h3>Overview</h3>
+      <p>{info.overview}</p>
+      <h4>Genres</h4>
+      {genres.map(gener => (
+        <span key={gener.id}>{gener.name}</span>
+      ))}
+    </div>
+  );
 };
 
 export default MoviesDetails;
