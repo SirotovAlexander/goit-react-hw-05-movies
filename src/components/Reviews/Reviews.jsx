@@ -8,6 +8,7 @@ const Reviews = () => {
   const { MovieID } = useParams();
 
   useEffect(() => {
+    if (!MovieID) return;
     async function getReviews() {
       try {
         const data = await getMovieReviews(MovieID);

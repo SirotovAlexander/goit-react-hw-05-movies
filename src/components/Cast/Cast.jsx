@@ -8,6 +8,7 @@ const Cast = () => {
   const { MovieID } = useParams();
 
   useEffect(() => {
+    if (!MovieID) return;
     async function getCast() {
       try {
         const data = await getMovieCast(MovieID);
