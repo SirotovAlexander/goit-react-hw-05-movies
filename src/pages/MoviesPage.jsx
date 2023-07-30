@@ -1,3 +1,7 @@
+import { Outlet, Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getMovieBySearch } from '../api/getDataAPI';
+
 const MoviesPage = () => {
   return (
     <div>
