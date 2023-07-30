@@ -7,7 +7,7 @@ const TrendList = ({ trends }) => {
     <ul>
       {trends.map(trend => {
         return (
-          <Link to={`/MoviesPage/${trend.id}`} key={trend.id}>
+          <Link to={`/movies/${trend.id}`} key={trend.id}>
             <li>
               {/* <img
               src={'https://image.tmdb.org/t/p/w300' + trend.poster_path}
