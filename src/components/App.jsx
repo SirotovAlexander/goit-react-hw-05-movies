@@ -6,6 +6,7 @@ import ErrorPage from 'pages/ErrorPage';
 import SharedLayout from 'Layout/SharedLayout';
 import MoviesDetails from './MoviesDetails/MoviesDetails';
 import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -14,7 +15,8 @@ export const App = () => {
         <Route index element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:MovieID" element={<MoviesDetails />}>
-          <Route path="/movies/:MovieID/:cast" element={<Cast />} />
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Route>

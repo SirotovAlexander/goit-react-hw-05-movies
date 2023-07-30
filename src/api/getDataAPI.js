@@ -26,6 +26,13 @@ export const getMovieCast = async id => {
   return response.data;
 };
 
+export const getMovieReviews = async id => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?${API_KEY}`
+  );
+  return response.data;
+};
+
 export const getMovieBySearch = async query => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/search/movie?query=${query}&${API_KEY}`
