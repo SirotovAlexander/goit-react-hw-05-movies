@@ -1,4 +1,4 @@
-import { Outlet, Link, useParams } from 'react-router-dom';
+import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from '../../api/getDataAPI';
 
@@ -7,6 +7,8 @@ const MoviesDetails = () => {
   const [genres, setGenres] = useState([]);
 
   const { MovieID } = useParams();
+
+  const location = useLocation();
 
   useEffect(() => {
     async function getDetails() {
@@ -24,6 +26,9 @@ const MoviesDetails = () => {
   return (
     <div>
       <div>
+        <Link to={location.state?.from ?? '/'}>
+          <button type="button">Go back</button>
+        </Link>
         <img
           src={'https://image.tmdb.org/t/p/w300' + info.poster_path}
           alt=""
