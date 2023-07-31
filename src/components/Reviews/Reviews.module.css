@@ -1,0 +1,20 @@
+.reviews__wrapper {
+  text-align: justify;
+}
+
+.revlist__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.revlist__item {
+  font-size: large;
+}
+
+.revlist__author {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
