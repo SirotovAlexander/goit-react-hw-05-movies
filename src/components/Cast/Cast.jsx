@@ -20,13 +20,22 @@ const Cast = () => {
     getCast();
   }, [MovieID]);
 
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   return (
     <ul>
       {cast.map(item => {
         return (
           <li key={item.id}>
             <img
-              src={'https://image.tmdb.org/t/p/w200' + item.profile_path}
+              src={
+                item.profile_path
+                  ? 'https://image.tmdb.org/t/p/w200' + item.profile_path
+                  : defaultImg
+              }
+              width={200}
+              height={300}
               alt="actor poster"
             />
             <span>{item.name}</span>

@@ -23,6 +23,9 @@ const MoviesDetails = () => {
     getDetails();
   }, [MovieID]);
 
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   return (
     <div>
       <div>
@@ -30,7 +33,11 @@ const MoviesDetails = () => {
           <button type="button">Go back</button>
         </Link>
         <img
-          src={'https://image.tmdb.org/t/p/w300' + info.poster_path}
+          src={
+            info.poster_path
+              ? 'https://image.tmdb.org/t/p/w300' + info.poster_path
+              : defaultImg
+          }
           alt=""
         />
         <h2>
