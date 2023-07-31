@@ -1,7 +1,8 @@
 .trend__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+
+  justify-content: center;
   align-items: baseline;
   gap: 30px;
 }
@@ -16,6 +17,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 500ms;
+}
+
+.trend__item:hover {
+  transform: scale(1.1);
 }
 
 .trend__poster {
