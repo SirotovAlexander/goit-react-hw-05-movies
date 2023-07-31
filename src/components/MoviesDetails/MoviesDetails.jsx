@@ -37,6 +37,7 @@ const MoviesDetails = () => {
       <div className={css.details__wrapper}>
         <div>
           <img
+            className={css.details__poster}
             src={
               info.poster_path
                 ? 'https://image.tmdb.org/t/p/w300' + info.poster_path

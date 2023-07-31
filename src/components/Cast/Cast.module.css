@@ -1,0 +1,22 @@
+.cast__list {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: baseline;
+  gap: 30px;
+}
+
+.cast__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: large;
+}
+
+.cast__photo {
+  height: 300px;
+  border-radius: 4%;
+}
