@@ -17,7 +17,11 @@ const Trends = () => {
     getTrends();
   }, []);
 
-  return <TrendList trends={trends} />;
+  return (
+    <div>
+      <TrendList trends={trends} />
+    </div>
+  );
 };
 
 export default Trends;

@@ -1,10 +1,11 @@
 import Trends from 'components/Trends/Trends';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div>
+    <section className={css.home__section}>
       <Trends />
-    </div>
+    </section>
   );
 };
 
