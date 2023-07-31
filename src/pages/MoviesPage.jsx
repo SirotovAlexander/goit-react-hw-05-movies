@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieBySearch } from '../api/getDataAPI';
-
+import css from './MoviesPage.module.css';
 import SearchList from 'components/SearchList/SearchList';
 
 const MoviesPage = () => {
@@ -31,10 +31,19 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input type="text" name="query" autoComplete="off" />
-        <button type="submit">Search</button>
-      </form>
+      <div className={css.search__bar}>
+        <form onSubmit={onSubmit} className={css.search__form}>
+          <input
+            className={css.search__input}
+            type="text"
+            name="query"
+            autoComplete="off"
+          />
+          <button className={css.search__btn} type="submit">
+            Search
+          </button>
+        </form>
+      </div>
       {query.length > 0 && <SearchList query={query} />}
     </div>
   );

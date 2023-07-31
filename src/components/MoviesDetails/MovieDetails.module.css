@@ -30,6 +30,8 @@
   border-radius: 3%;
 }
 .details__poster {
+  width: 300px;
+  height: 450px;
   border-radius: 4%;
 }
 
