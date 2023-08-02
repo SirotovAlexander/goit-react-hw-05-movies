@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieBySearch } from '../api/getDataAPI';
 import css from './MoviesPage.module.css';
-// import SearchList from 'components/SearchList/SearchList';
+
 import MovieList from '../components/MoviesList/MoviesList';
 
 const MoviesPage = () => {
