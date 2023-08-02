@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../../api/getDataAPI';
-import TrendList from './TrendList';
+// import TrendList from './TrendList';
+import MovieList from '../MoviesList/MoviesList';
 
 const Trends = () => {
-  const [trends, setTrends] = useState([]);
+  const [value, setValue] = useState([]);
 
   useEffect(() => {
     async function getTrends() {
       try {
         const data = await getTrending();
-        setTrends(data.results);
+        setValue(data.results);
       } catch (error) {
         console.log(error);
       }
@@ -19,7 +20,7 @@ const Trends = () => {
 
   return (
     <div>
-      <TrendList trends={trends} />
+      <MovieList value={value} />
     </div>
   );
 };

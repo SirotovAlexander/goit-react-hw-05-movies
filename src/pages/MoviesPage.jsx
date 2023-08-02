@@ -2,10 +2,11 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieBySearch } from '../api/getDataAPI';
 import css from './MoviesPage.module.css';
-import SearchList from 'components/SearchList/SearchList';
+// import SearchList from 'components/SearchList/SearchList';
+import MovieList from '../components/MoviesList/MoviesList';
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState('');
+  const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onSubmit = event => {
@@ -21,7 +22,7 @@ const MoviesPage = () => {
     async function getQuery() {
       try {
         const data = await getMovieBySearch(searchParams.get('query'));
-        setQuery(data.results);
+        setValue(data.results);
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +45,7 @@ const MoviesPage = () => {
           </button>
         </form>
       </div>
-      {query.length > 0 && <SearchList query={query} />}
+      {value.length > 0 && <MovieList value={value} />}
     </div>
   );
 };
