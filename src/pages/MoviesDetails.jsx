@@ -1,6 +1,6 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getMovieDetails } from '../../api/getDataAPI';
+import { getMovieDetails } from '../api/getDataAPI';
 import css from './MovieDetails.module.css';
 
 const MoviesDetails = () => {

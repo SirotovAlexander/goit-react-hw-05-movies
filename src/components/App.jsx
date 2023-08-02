@@ -7,7 +7,7 @@ const HomePage = lazy(() => import('pages/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage'));
 const ErrorPage = lazy(() => import('pages/ErrorPage'));
 
-const MoviesDetails = lazy(() => import('./MoviesDetails/MoviesDetails'));
+const MoviesDetails = lazy(() => import('../pages/MoviesDetails'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 
