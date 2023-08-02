@@ -36,26 +36,28 @@ const Cast = () => {
     <>
       {isLoading && <Loader />}
       {error && <p>Oops ... Somesing went wrong...</p>}
-      <ul className={css.cast__list}>
-        {cast.map(item => {
-          return (
-            <li key={item.id} className={css.cast__item}>
-              <img
-                className={css.cast__photo}
-                src={
-                  item.profile_path
-                    ? 'https://image.tmdb.org/t/p/w200' + item.profile_path
-                    : defaultImg
-                }
-                width={200}
-                alt="actor poster"
-              />
-              <span>{item.name}</span>
-              <span>{item.character}</span>
-            </li>
-          );
-        })}
-      </ul>
+      {cast && (
+        <ul className={css.cast__list}>
+          {cast.map(item => {
+            return (
+              <li key={item.id} className={css.cast__item}>
+                <img
+                  className={css.cast__photo}
+                  src={
+                    item.profile_path
+                      ? 'https://image.tmdb.org/t/p/w200' + item.profile_path
+                      : defaultImg
+                  }
+                  width={200}
+                  alt="actor poster"
+                />
+                <span>{item.name}</span>
+                <span>{item.character}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };

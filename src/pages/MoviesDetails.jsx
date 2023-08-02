@@ -45,32 +45,34 @@ const MoviesDetails = () => {
           Go back
         </button>
       </Link>
-      <div className={css.details__wrapper}>
-        <div>
-          <img
-            className={css.details__poster}
-            src={
-              info.poster_path
-                ? 'https://image.tmdb.org/t/p/w300' + info.poster_path
-                : defaultImg
-            }
-            alt=""
-          />
+      {info && (
+        <div className={css.details__wrapper}>
+          <div>
+            <img
+              className={css.details__poster}
+              src={
+                info.poster_path
+                  ? 'https://image.tmdb.org/t/p/w300' + info.poster_path
+                  : defaultImg
+              }
+              alt=""
+            />
+          </div>
+          <div className={css.text__wrapper}>
+            <h2>
+              {info.original_title} (
+              {info.release_date && info.release_date.slice(0, 4)})
+            </h2>
+            <p>User score: {Math.round((info.vote_average / 10) * 100)}%</p>
+            <h3>Overview</h3>
+            <p>{info.overview}</p>
+            <h4>Genres</h4>
+            {genres.map(gener => (
+              <span key={gener.id}>{gener.name}</span>
+            ))}
+          </div>
         </div>
-        <div className={css.text__wrapper}>
-          <h2>
-            {info.original_title} (
-            {info.release_date && info.release_date.slice(0, 4)})
-          </h2>
-          <p>User score: {Math.round((info.vote_average / 10) * 100)}%</p>
-          <h3>Overview</h3>
-          <p>{info.overview}</p>
-          <h4>Genres</h4>
-          {genres.map(gener => (
-            <span key={gener.id}>{gener.name}</span>
-          ))}
-        </div>
-      </div>
+      )}
 
       <div className={css.addinfo__wrapper}>
         <p className={css.title__wrapper}>Additional information</p>

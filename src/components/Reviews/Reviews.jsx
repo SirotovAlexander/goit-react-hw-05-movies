@@ -33,16 +33,18 @@ const Reviews = () => {
       {isLoading && <Loader />}
       {error && <p>Oops ... Somesing went wrong...</p>}
       {reviews.length === 0 && <p>We don't have any reviews for this movie</p>}
-      <ul className={css.revlist__wrapper}>
-        {reviews.map(review => {
-          return (
-            <li className={css.revlist__item} key={review.id}>
-              <p className={css.revlist__author}>{review.author}</p>
-              <p>{review.content}</p>
-            </li>
-          );
-        })}
-      </ul>
+      {reviews && (
+        <ul className={css.revlist__wrapper}>
+          {reviews.map(review => {
+            return (
+              <li className={css.revlist__item} key={review.id}>
+                <p className={css.revlist__author}>{review.author}</p>
+                <p>{review.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
