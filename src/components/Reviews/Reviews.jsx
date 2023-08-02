@@ -7,6 +7,7 @@ import Loader from 'components/Loader/Loade';
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { MovieID } = useParams();
 
@@ -18,6 +19,7 @@ const Reviews = () => {
         const data = await getMovieReviews(MovieID);
         setReviews(data.results);
       } catch (error) {
+        setError(true);
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -29,6 +31,7 @@ const Reviews = () => {
   return (
     <div className={css.reviews__wrapper}>
       {isLoading && <Loader />}
+      {error && <p>Oops ... Somesing went wrong...</p>}
       {reviews.length === 0 && <p>We don't have any reviews for this movie</p>}
       <ul className={css.revlist__wrapper}>
         {reviews.map(review => {

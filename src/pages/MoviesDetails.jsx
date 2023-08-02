@@ -9,6 +9,7 @@ const MoviesDetails = () => {
   const [info, setInfo] = useState({});
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { MovieID } = useParams();
 
@@ -23,6 +24,7 @@ const MoviesDetails = () => {
         setInfo(data);
         setGenres(data.genres);
       } catch (error) {
+        setError(true);
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -37,6 +39,7 @@ const MoviesDetails = () => {
   return (
     <div className={css.wrapper}>
       {isLoading && <Loader />}
+      {error && <p>Oops ... Somesing went wrong...</p>}
       <Link to={backLink.current}>
         <button className={css.backbutoon} type="button">
           Go back

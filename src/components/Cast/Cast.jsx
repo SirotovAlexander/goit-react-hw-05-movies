@@ -8,6 +8,7 @@ import css from './Cast.module.css';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { MovieID } = useParams();
 
@@ -19,6 +20,7 @@ const Cast = () => {
         const data = await getMovieCast(MovieID);
         setCast(data.cast);
       } catch (error) {
+        setError(true);
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -33,6 +35,7 @@ const Cast = () => {
   return (
     <>
       {isLoading && <Loader />}
+      {error && <p>Oops ... Somesing went wrong...</p>}
       <ul className={css.cast__list}>
         {cast.map(item => {
           return (

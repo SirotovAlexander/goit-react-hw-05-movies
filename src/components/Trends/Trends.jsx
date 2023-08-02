@@ -7,6 +7,7 @@ import MovieList from '../MoviesList/MoviesList';
 const Trends = () => {
   const [value, setValue] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -15,6 +16,7 @@ const Trends = () => {
         const data = await getTrending();
         setValue(data.results);
       } catch (error) {
+        setError(true);
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -26,7 +28,8 @@ const Trends = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <MovieList value={value} />
+      {error && <p>Oops ... Somesing went wrong...</p>}
+      {value.length > 0 && <MovieList value={value} />}
     </div>
   );
 };

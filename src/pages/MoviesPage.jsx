@@ -10,6 +10,7 @@ const MoviesPage = () => {
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit = event => {
     event.preventDefault();
@@ -28,6 +29,7 @@ const MoviesPage = () => {
         const data = await getMovieBySearch(searchParams.get('query'));
         setValue(data.results);
       } catch (error) {
+        setError(true);
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -52,6 +54,7 @@ const MoviesPage = () => {
         </form>
       </div>
       {isLoading && <Loader />}
+      {error && <p>Oops ... Somesing went wrong...</p>}
       {value.length > 0 && <MovieList value={value} />}
     </div>
   );
