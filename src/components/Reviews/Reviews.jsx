@@ -2,20 +2,25 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieReviews } from '../../api/getDataAPI';
 import css from './Reviews.module.css';
+import Loader from 'components/Loader/Loade';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { MovieID } = useParams();
 
   useEffect(() => {
     if (!MovieID) return;
     async function getReviews() {
+      setIsLoading(true);
       try {
         const data = await getMovieReviews(MovieID);
         setReviews(data.results);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     getReviews();
@@ -23,6 +28,7 @@ const Reviews = () => {
 
   return (
     <div className={css.reviews__wrapper}>
+      {isLoading && <Loader />}
       {reviews.length === 0 && <p>We don't have any reviews for this movie</p>}
       <ul className={css.revlist__wrapper}>
         {reviews.map(review => {

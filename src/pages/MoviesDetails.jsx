@@ -1,11 +1,14 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { getMovieDetails } from '../api/getDataAPI';
+import Loader from 'components/Loader/Loade';
+
 import css from './MovieDetails.module.css';
 
 const MoviesDetails = () => {
   const [info, setInfo] = useState({});
   const [genres, setGenres] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { MovieID } = useParams();
 
@@ -13,6 +16,7 @@ const MoviesDetails = () => {
   const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
+    setIsLoading(true);
     async function getDetails() {
       try {
         const data = await getMovieDetails(MovieID);
@@ -20,6 +24,8 @@ const MoviesDetails = () => {
         setGenres(data.genres);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     getDetails();
@@ -30,6 +36,7 @@ const MoviesDetails = () => {
 
   return (
     <div className={css.wrapper}>
+      {isLoading && <Loader />}
       <Link to={backLink.current}>
         <button className={css.backbutoon} type="button">
           Go back

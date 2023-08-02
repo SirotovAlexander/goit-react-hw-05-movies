@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { getMovieBySearch } from '../api/getDataAPI';
 import css from './MoviesPage.module.css';
 
+import Loader from 'components/Loader/Loade';
 import MovieList from '../components/MoviesList/MoviesList';
 
 const MoviesPage = () => {
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = event => {
     event.preventDefault();
@@ -19,12 +21,16 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (!searchParams.get('query')) return;
+
     async function getQuery() {
+      setIsLoading(true);
       try {
         const data = await getMovieBySearch(searchParams.get('query'));
         setValue(data.results);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     getQuery();
@@ -45,6 +51,7 @@ const MoviesPage = () => {
           </button>
         </form>
       </div>
+      {isLoading && <Loader />}
       {value.length > 0 && <MovieList value={value} />}
     </div>
   );
