@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../../api/getDataAPI';
-// import TrendList from './TrendList';
+
 import MovieList from '../MoviesList/MoviesList';
 
 const Trends = () => {
