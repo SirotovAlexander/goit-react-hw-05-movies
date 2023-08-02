@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import css from '../Trends/TrendList.module.css';
 
 const SearchList = ({ query }) => {
-  //   console.log(trends);
   const location = useLocation();
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
