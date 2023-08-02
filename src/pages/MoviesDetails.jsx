@@ -1,5 +1,5 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getMovieDetails } from '../api/getDataAPI';
 import css from './MovieDetails.module.css';
 
@@ -10,6 +10,7 @@ const MoviesDetails = () => {
   const { MovieID } = useParams();
 
   const location = useLocation();
+  const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     async function getDetails() {
@@ -29,7 +30,7 @@ const MoviesDetails = () => {
 
   return (
     <div className={css.wrapper}>
-      <Link to={location.state?.from ?? '/'}>
+      <Link to={backLink.current}>
         <button className={css.backbutoon} type="button">
           Go back
         </button>
